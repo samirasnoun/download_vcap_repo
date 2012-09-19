@@ -14,7 +14,7 @@
 end
 
 
-if "ls /srv/vcap/dev_setup"
+if "ls /srv/vcap/dev_setup" != nil 
 
 Chef::Log.warn("Vcap is already downloaded")
 
@@ -30,7 +30,7 @@ bash "make vcap local copy from local http repo  " do
   rm vcap_zip
   EOH
 #  git init
- not_if {"ls /srv/vcap/dev_setup" }
+not_if "ls /srv | grep vcap "
 
 end
 
